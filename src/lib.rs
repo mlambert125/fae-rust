@@ -9,6 +9,7 @@ pub use rule_parser::RulesParser;
 
 type StaticParseError<'a> = ParseError<usize, lalrpop_util::lexer::Token<'a>, &'static str>;
 
+// This is just a helper to reduce the verbosity of error messages
 fn user_error(error: &'static str) -> StaticParseError {
 	ParseError::User { error }
 }

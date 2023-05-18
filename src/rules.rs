@@ -16,6 +16,7 @@ pub struct RuleComponent {
 	pub demographics: Vec<RuleTerm>,
 	pub body_parts: Vec<RuleTerm>,
 	// This is probably supposed to be parsed at some point.
+	// It wasn't in the language spec but appears on two lines in the example file.
 	pub age_range: Option<String>,
 }
 
