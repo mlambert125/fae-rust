@@ -2,7 +2,6 @@ use crate::rules::*;
 use crate::rules::RuleTermType::*;
 use crate::{strip_token_edges, strip_token_end};
 use crate::user_error;
-use std::collections::VecDeque;
 use std::str::FromStr;
 
 grammar;
