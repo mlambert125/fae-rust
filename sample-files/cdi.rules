@@ -1,0 +1,405 @@
+ABDOMINAL_PAIN [pain] `abdominal` !{chronic} !{history} & ![injured in accident] !{history}
+ABDOMINAL_DISTENTION [abdominal distention] !{chonic} !{history} !{jugular vein} & ![cirrhosis] & ![chronic hepatitis] & ![alcoholic liver disease] & ![non-alcholoic fatty liver disease] & ![malignant ascities] & ![toxic liver disease] & ![pregnant] !{history}
+ABLATION [ablation]
+ABNORMAL_SPUTUM [abnormal sputum] & ![lung cancer] !{history} & ![bronchitis] {chronic} & ![cystic fibrosis]
+ACE_INHIBITORS [ace inhibitors]
+ACETAZOLAMIDE [acetazolamide]
+ASCITIES [ascities] !{chonic} !{history} & ![cirrhosis] & ![chronic hepatitis] & ![alcoholic liver disease] & ![non-alcoholoic fatty liver disease] & ![malignant ascities] & ![toxic liver disease]
+ACUTE_ACIDOSIS [acidosis] {acute} !{chronic} !{acute on chronic} !{metabolic} !{respiratory}
+ACUTE_HEART_FAILURE [heart failure] {acute} !{family hx} !{history} !{chronic} !{acute on chronic} !{systolic} !{distolic}
+ACUTE_KIDNEY_FAILURE [acute kidney failure] & ![chronic kidney disease] & ![end-stage renal disease] & ![dialysis dependent]
+ACUTE_ON_CHRONIC_HEART_FAILURE [heart failure] {acute on chronic} !{family hx}
+AGITATION [agitation]
+ALCOHOL_WITHDRAWAL [alcohol withdrawal] !{history}
+ALTERED_LEVEL_OF_CONSCIOUSNESS [altered level of consciousness] & ![acute alcohol intoxication] & ![alcohol withdrawl] !{history} & ![opioid overdose] !{history} & ![opioid withdrawl] !{history} & ![age related] 
+ANEMIA [anemia] !{history}
+ANEMIA_MEDICATION [anemia medication]
+ANGIOTENSIN_RECEPTOR_NEPRILYSIN_INHIBITORS [arnis]
+ANGIOTENSIN_II_RECEPTOR_BLOCKERS [arbs]
+ANTIANGINAL_MEDICATION [antianginal medication]
+ANTIARRHYTHMIC [antiarrhythmic]
+ANTIBIOTIC [antibiotic] !{history}
+ANTICOAGULANT [anticoagulant]
+ANTICONVULSANT [anticonvulsant]
+ANTIFIBRINOLYTIC_MEDICATION [antifibrinolytic medication]
+ANTIFUNGAL [antifungal] !{history}
+ANTIPLATELET [antiplatelet]
+ANTIVIRAL [antiviral] !{history}
+APHASIA [aphasia] !{chronic}
+ATAXIA [ataxia] !{chronic} & ![cerebral palsy]
+AZOTEMIA [azotemia]
+BACTERIAL_PNEUMONIA_ORGANISM [bacterial pneumonia organism] !{coverage} !{history} & ![urine]
+BENZODIAZAPINE [benzodiazepine]
+BETA_BLOCKER [beta blocker]
+BOWEL_DISORDER [bowel disorder]
+BRADEN_RISK_ASSESSMENT_SCORE [braden risk assessment score] {low}
+BRADEN_RISK_ASSESSMENT_SCORE [braden risk assessment score] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<12:$1|NULL~
+C_REACTIVE_PROTEIN_ELEVATED [c-reactive protein] {high}
+C_REACTIVE_PROTEIN_ELEVATED [c-reactive protein] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>10:$1|NULL~
+CALCIUM_CHANNEL_BLOCKER [calcium channel blocker] !{cocktail solution}
+CARDIOVERSION [cardioversion]
+CENTRAL_VENOUS_CONGESTION [central venous congestion] !{history}
+CEREBRAL_EDEMA [edema] `cerebral`
+CEREBRAL_INFARCTION [cerebral infarction] !{history} !{scale} !{volume}
+CEREBRAL_ISCHEMIA [ischemia] !{injury} !{history} !{family history} `cerebral` 
+CHAIRFAST [chairfast]
+CHRONIC_ACIDOSIS [acidosis] {chronic} !{acute} !{acute on chronic} !{metabolic} !{respiratory}
+CHRONIC_DISEASE [cancer pt] & [cystic fibrosis] & [alzheimers disease] & [dementia] & [end-stage renal disease] & [dialysis dependent] & [cirrhosis] & [copd] & [aids] & [hiv] & [chronic kidney disease] & [alcoholic liver disease] & [heart failure]
+CHRONIC_HEART_FAILURE [heart failure] {chronic} !{family hx} !{acute on chronic} !{acute}
+CHRONIC_PULMONARY_EDEMA [edema] {chronic} `pulmonary`
+CLOT_SUPPORTING_THERAPY [clot supporting therapy]
+CLOUDY_URINE [urine] {cloudy} {purulent}
+COMA [coma]
+CONCENTRIC_HYPERTROPHY [concentric hypertrophy] 
+CRACKLES [crackles]
+CYANOSIS [cyanosis] !`toes` !`fingers`
+CYSTOSTOMY_CATHETER [cystostomy catheter]
+DARK_COLORED_URINE [dark colored urine]
+DEBILITATED [debilitated]
+DECOMPENSATED_HEART_FAILURE [heart failure] {decompensated}
+DECREASED_FUNCTIONAL_CAPACITY [functional capacity] {reduced}
+DELAYED_CAPILLARY_REFILL [delayed capillary refill] & ![raynauds syndrome] & ![other hypothermia] & ![heart failure] & ![shock] {cardiogenic} !{history} 
+DELIRIUM [delirium]
+DESMOPRESSIN_ACETATE [desmopressin acetate]
+DIABETES_INSIPIDUS [diabetes insipidus] !{history}
+DIAPHORETIC [diaphoretic] & ![generalized hyperhidrosis] & ![hypoglycemia] !{history}
+DIARRHEA [DIARRHEA] !{chronic} & ![crohns disease] & ![ulcerative colitis] & ![irritable bowel syndrome] & ![celiac disease]
+DIASTOLIC_DYSFUNCTION [diastolic dysfunction] {grade}
+DIASTOLIC_HEART_FAILURE [diastolic congestive heart failure] !{family hx} !{combined sytolic and diastolic}
+DIGOXIN [digoxin]
+DIURETIC [diuretic] !{history}
+DKA_HYPERGLYCEMIA [blood glucose] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>250:$1|NULL~
+DOBUTAMINE [dobutamine]
+DOPAMINE [dopamine]
+DYSPNEA_ON_EXERTION [dyspnea on exertion]
+EJECTION_FRACTION [ejection fraction] ~@SUBJECT.{0,10}?(@NUMBER)\/::$1~
+ELEVATED_ACTIVATED_CLOTTING_TIME [act] {high}
+ELEVATED_ACTIVATED_CLOTTING_TIME [act] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>120:$1|NULL~
+ELEVATED_CARDIAC_INDEX [cardiac index] {high}
+ELEVATED_CARDIAC_INDEX [cardiac index] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>4:$1|NULL~
+ELEVATED_CARDIAC_OUTPUT [cardiac output] {high}
+ELEVATED_CARDIAC_OUTPUT [cardiac output] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>8:$1|NULL~
+ELEVATED_CENTRAL_VENOUS_PRESSURE [central venous pressure] {high}
+ELEVATED_CENTRAL_VENOUS_PRESSURE [central venous pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>16:$1|NULL~
+ELEVATED_D_DIMER [d-dimer]  ~@SUBJECT.{0,10}?(@NUMBER)::|$1>500:$1|NULL~
+ELEVATED_D_DIMER [d-dimer] {high} 
+ELEVATED_HOMOCYSTEINE_LEVELS [homocysteine] {high}
+ELEVATED_HOMOCYSTEINE_LEVELS [homocysteine] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>15:$1|NULL~
+ELEVATED_INTERNATIONAL_NORMALIZED_RATIO [inr] {high} !{goal}
+ELEVATED_INTERNATIONAL_NORMALIZED_RATIO [inr] !{goal} ~@SUBJECT.{0,10}?(@NUMBER)::|$1>1.1:$1|NULL~    
+ELEVATED_INTRACRANIAL_PRESSUE [intracranial pressure] {high}
+ELEVATED_INTRACRANIAL_PRESSUE [intracranial pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>15:$1|NULL~
+ELEVATED_PARTIAL_THROMBOPLASTIN_TIME [ptt] {high}
+ELEVATED_PARTIAL_THROMBOPLASTIN_TIME [ptt] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>35:$1|NULL~
+ELEVATED_PROTHROMBIN_TIME [prothrombin time] {high}
+ELEVATED_PROTHROMBIN_TIME [prothrombin time] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>13.5:$1|NULL~
+ELEVATED_PULMONARY_ARTERY_OCCULSIVE_PRESSURE [pulmonary artery occlusive pressure] {high}
+ELEVATED_PULMONARY_ARTERY_OCCULSIVE_PRESSURE [pulmonary artery occlusive pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>12:$1|NULL~ 
+ELEVATED_PULMONARY_SYSTOLIC_PRESSURE [pulmonary systolic pressure] {high}
+ELEVATED_PULMONARY_SYSTOLIC_PRESSURE [pulmonary systolic pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>20:$1|NULL~
+ELEVATED_PULMONARY_VASCULAR_RESISTANCE [pulmonary vascular resistance] {high}
+ELEVATED_PULMONARY_VASCULAR_RESISTANCE [pulmonary vascular resistance] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>200:$1|NULL~
+ELEVATED_RIGHT_VENTRICLE_SYSTOLIC_PRESSURE [right ventricle systolic pressure] {high}
+ELEVATED_RIGHT_VENTRICLE_SYSTOLIC_PRESSURE [right ventricle systolic pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>30:$1|NULL~
+ELEVATED_SERUM_BANDS [bandemia]
+ELEVATED_SERUM_BANDS [bands] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>5:$1|NULL~s
+ELEVATED_SERUM_CHLORIDE [hyperchloremia]
+ELEVATED_SERUM_CHLORIDE [serum chloride] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>107:$1|NULL~
+ELEVATED_SERUM_POTASSIUM [hyperkalemia]
+ELEVATED_SERUM_POTASSIUM [serum potassium] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>5.1:$1|NULL~
+ELEVATED_SERUM_OSMOLALITY [serum osmolality] {high}
+ELEVATED_SERUM_OSMOLALITY [serum osmolality] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>320:$1|NULL~
+ELEVATED_SERUM_SODIUM [hypernatremia]
+ELEVATED_SERUM_SODIUM [serum sodium] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>145:$1|NULL~
+ELEVATED_SYSTEMIC_VASCULAR_RESISTANCE [systemic vascular resistance] {high}
+ELEVATED_SYSTEMIC_VASCULAR_RESISTANCE [systemic vascular resistance] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>1200:$1|NULL~ 
+ELEVATED_THROMBIN_TIME [tt] {high}
+ELEVATED_THROMBIN_TIME [tt] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>14:$1|NULL~
+ELEVATED_TROPONIN_I [troponin i] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>0.04:$1|NULL~
+ELEVATED_TROPONIN_T [troponin t] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>0.01:$1|NULL~
+ELEVATED_TROPONIN_T_HIGH_SENSITIVITY_MALE [troponin t high sensitivity] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>22:$1|NULL~
+ELEVATED_TROPONIN_T_HIGH_SENSITIVITY_FEMALE [troponin t high sensitivity] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>14:$1|NULL~
+EPINEPHRINE [epinephrine]
+EPISTAXIS [epistaxis]
+HIGH_ESTIMATED_BLOOD_LOSS [estimated blood loss] {high}
+HIGH_ESTIMATED_BLOOD_LOSS [estimated blood loss] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>100:$1|NULL~
+EXTEREME_THIRST [extreme thirst]
+FEELING_COLD [feeling cold]
+FENOLDOPAM [fenoldopam]
+FEVER [body temperature] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=38 and $1<42:$1|NULL~ & ![other fever] & ![alcohol withdrawl] !{history} & ![hyperthyroidism] !{history} & ![stimulant intoxication] !{history} & ![heat stroke] !{history}
+FEVER [body temperature] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>100.4:$1|NULL~ & ![other fever] & ![alcohol withdrawl] !{history} & ![hyperthyroidism] !{history} & ![stimulant intoxication] !{history} & ![heat stroke] !{history}
+FEVER [fever] & ![other fever] & ![alcohol withdrawl] !{history} & ![hyperthyroidism] !{history} & ![stimulant intoxication] !{history} & ![heat stroke] !{history}
+FLACCID_LIMBS [flaccid limbs]
+FLANK_PAIN [flank pain]
+FLUID_BOLUS [fluid bolus]
+FOUL_SMELLING_DISCHARGE [foul smelling discharge]
+FRAIL [frail]
+FRUITY_BREATH [fruity breath]
+FUNGAL_PNEUMONIA_ORGANISM [fungal pneumonia organsim] !{history}
+GLASGOW_COMA_SCORE [glasgow coma score] {low} 
+GLASGOW_COMA_SCALE_SIGN_OF_COMA [glasgow coma score] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<=8:$1|NULL~
+GLASGOW_COMA_SCORE [glasgow coma score] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<15:$1|NULL~
+GLOMERULAR_FILTRATION_RATE [glomerular filtration rate] {low}
+GLOMERULAR_FILTRATION_RATE [glomerular filtration rate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<90:$1|NULL~
+GOUT_FLARE [gout flare]
+GRIP_STRENGTH [grip strength] {reduced}
+HALOPERIDOL [haloperidol]
+HEADACHE [headache] 
+HEART_PALPITATIONS [palpitations] !{submitted to} & ![sick sinus syndrome] & ![stimulant intoxication] !{history}
+HEAVY_METAL_POISIONING [heavy metal] {poisioning} !{history}
+HEIGHT  [height-cm]
+HEMATOMA [hematoma] !{history}
+HEMATOPOIETIC_AGENT [hematopoietic agent]
+HEME_POSITIVE_STOOL [heme positive stool]
+HEMORRHAGE [hemorrhage] !{there was no} !{subarachnoid} !{intracranial} !{intracerebral} !{intraventricular} !{was performed} !{right frontal} !{left frontal}
+HEPATOJUGULAR_REFLUX [hepatojugular reflux] {positive}
+HEPATOMEGALY [hepatomegaly]
+HHNS_HYPERGLYCEMIA [blood glucose] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>600:$1|NULL~
+HIGH_ALANINE_AMINOTRANSFERASE [alanine aminotransferase] {high}
+HIGH_ALANINE_AMINOTRANSFERASE [alanine aminotransferase] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>56:$1|NULL~
+HIGH_ASPARTATE_AMINOTRANSFERASE [aspartate aminotransferase] {high}
+HIGH_ASPARTATE_AMINOTRANSFERASE [aspartate aminotransferase] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>35:$1|NULL~
+HIGH_ANION_GAP [anion gap] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>15:$1|NULL~
+HIGH_BILIRUBINEMIA [hyperbilirubinemia] & ![cirrhosis] & ![chronic hepatitis] & ![alcoholic liver disease] & ![non-alcholoic fatty liver disease] & ![rotor's syndrome] & ![dubin-johnson syndrome] & ![gilbert syndrome] & ![crigler najjar syndrome]
+HIGH_BLOOD_C02 [blood co2] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>45:$1|NULL~
+HIGH_BLOOD_C02 [hypercapnia]
+HIGH_BLOOD_CARBON_DIOXIDE [blood co2] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>45:$1|NULL~
+HIGH_BLOOD_CARBON_DIOXIDE [hypercapnia]
+HIGH_BLOOD_GLUCOSE_HHNS [blood glucose] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>600:$1|NULL~
+HIGH_BLOOD_GLUCOSE_DKA [blood glucose] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>250:$1|NULL~
+HIGH_BLOOD_GLUCOSE [blood glucose] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>140:$1|NULL~ 
+HIGH_BNP [BNP] <75 years old,  ~@SUBJECT.{0,10}?(@NUMBER)::|$1>125:$1|NULL~
+HIGH_BNP [BNP] > or = 75 years old, ~@SUBJECT.{0,10}?(@NUMBER)::|$1>450:$1|NULL~
+HIGH_HEART_RATE [tachycardia]
+HIGH_HEART_RATE [heart rate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>90:$1|NULL~ 
+HIGH_PRO_BNP [pro bnp] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>3000:$1|NULL~
+HIGH_RESPIRATORY_RATE [respiratory rate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>20:$1|NULL~
+HIGH_RESPIRATORY_RATE [tachypnea]
+HIGH_SERUM_AMMONIA [hyperammonemia]
+HIGH_SERUM_AMMONIA [serum ammonia] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>30:$1|NULL~
+HIGH_SERUM_BICARBONATE [bicarbonate] {high} !{ml/hr}
+HIGH_SERUM_BICARBONATE [bicarbonate] !{ml/hr} ~@SUBJECT.{0,10}?(@NUMBER)::|$1>26:$1|NULL~
+HIGH_SERUM_BILIRUBIN [hyperbilirubinemia] & ![cirrhosis] & ![chronic hepatitis] & ![alcoholic liver disease] & ![non-alcholoic fatty liver disease] & ![rotor's syndrome] & ![dubin-johnson syndrome] & ![gilbert syndrome] & ![crigler najjar syndrome]
+HIGH_SERUM_BILIRUBIN [serum bilirubin] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>1.2:$1|NULL~
+HIGH_SERUM_BLOOD_UREA_NITORGEN [serum bun] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>30:$1|NULL~
+HIGH_SERUM_BLOOD_UREA_NITROGEN [elevated serum bun] & ![chronic kidney disease] & ![end-stage renal disease] & ![dialysis dependent]
+HIGH_SERUM_CALCIUM [hypercalcemia]
+HIGH_SERUM_CALCIUM [serum calcium] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>10.2:$1|NULL~
+HIGH_SERUM_CREATININE [elevated serum creatinine] & ![chronic kidney disease] & ![end-stage renal disease] & ![dialysis dependent]
+HIGH_SERUM_CREATININE [creatinine] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>1.2:$1|NULL~ 
+HIGH_SERUM_LACTATE [hyperlactatemia] 
+HIGH_SERUM_LACTATE [serum lactate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>2:$1|NULL~
+HIGH_SERUM_LACTATE_ACIDOSIS [serum lactate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>4:$1|NULL~
+HIGH_SERUM_SODIUM [hypernatremia]
+HIGH_SERUM_SODIUM [serum sodium] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>145:$1|NULL~
+HYDRALAZINE [hydralazine]
+HYDRALAZINE_AND_ISOSORBIDE_DINITRATE [hydralazine and isosorbide dinitrate]
+HYDRONEPHROSIS [hydronephrosis]
+HYPERKALEMIA_EKG_CHANGES [hyperkalemia ekg changes]
+HYPEROSMOLAR_HYPERGLYCEMIA_SYNDROME [hhs]
+HYPERTENSIVE_CRISIS [diastolic blood pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>120:$1|NULL~
+HYPERTENSIVE_CRISIS [hypertensive crisis]
+HYPERTENSIVE_CRISIS [systolic blood pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>180:$1|NULL~
+HYPERTONIC_SALINE [hypertonic saline]
+HYPOKALEMIA_EKG_CHANGES [hypokalemia ekg changes]
+IMPLANTABLE_CARDIAC_ASSIST_DEVICE [implantable cardiac assist device]
+INCREASED_URINARY_FREQUENCY [polyuria] & ![diuretic use] !{history} & ![diabetes insipidus] {history}
+INDWELLING_URETHRAL_CATHETER [indwelling urethral catheter]
+INFECTION [infection] !{history} !{technician:} !{susceptibility to} !{nares pcr} !`sinus` !`ear` !{no source of}
+INFLAMMATION [inflammation] !{chronic} !{history}
+INFLUENZA_A [influenza a]
+INTERLEUKIN_6_ELEVATED [interleukin-6] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>7.0:$1|NULL~
+IRREGULAR_ECHO_FINDING [irregular echo finding]
+IRREGULAR_RADIOLOGY_FINDINGS_BRAIN [irregular radiology findings brain] !{perihilar} !`lung`
+IRREGULAR_RADIOLOGY_REPORT_CARDIAC [irregular radiology report cardiac] !{mild} !{may be}
+IRREGULAR_RADIOLOGY_REPORT_LUNGS [irregular radiology report lungs] !{mild} !`ear` !`maxillary sinus` !{pericardial} !{favoring} !{small} !{residual} & ![joint effusion] 
+IRREGULAR_RADIOLOGY_REPORT_PNEUMONIA [irregular radiology report pneumonia] !{mild} !`ear` !`maxillary sinus` !{pericardial} !{favoring} !{small} !{residual} & ![joint effusion] 
+JUGULAR_VEIN_DISTENTION [jugular vein distention] 
+KIDNEY_STONES [nephrolithiasis]
+LACTULOSE [lactulose]
+LEFT_INTERNAL_CAROTID_STENOSIS [internal carotid stenosis] {left} !{external} ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=50:$1|NULL~
+LEFT_VENTRICLE_HYPERTROPHY [left ventricle hypertrophy]
+LEVOPHED [levophed]
+LIVER_DISORDER  [hepatic failure] !{history} & [cirrhosis]
+LOSS_OF_MUSCLE_MASS [muscle mass loss]
+LOSS_OF_SUBCUTANEOUS_FAT [subcutaneous fat loss] 
+LOW_ACTIVATED_PROTEIN_C_RESISTANCE_RATIO [apc resistance ratio] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<2.3:$1|NULL~
+LOW_ARTERIAL_BLOOD_PH [acidosis] !{metabolic} !{respiratory} !{lactic}
+LOW_ARTERIAL_BLOOD_PH_DKA [blood ph] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<7.30:$1|NULL~
+LOW_ARTERIAL_BLOOD_PH [blood ph] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<7.35:$1|NULL~
+LOW_BASE_EXCESS [base excess] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<-2:$1|NULL~
+LOW_BLOOD_CARBON_DIOXIDE [blood co2] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<35:$1|NULL~
+LOW_BLOOD_CARBON_DIOXIDE [hypocapnia]
+LOW_BLOOD_GLUCOSE [blood glucose] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<70:$1|NULL~ 
+LOW_ARTERIAL_BLOOD_OXYGEN [pao2] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<80:$1|NULL~
+LOW_BLOOD_PRESSURE [hypotension] !{chronic} !{orthostatic}
+LOW_BMI [body mass index] {low} 
+LOW_CARDIAC_INDEX [cardiac index] {low}
+LOW_CARDIAC_INDEX [cardiac index] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<2.5:$1|NULL~
+LOW_CARDIAC_OUTPUT [cardiac output] {low} 
+LOW_CARDIAC_OUTPUT [cardiac output] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<4:$1|NULL~
+LOW_CENTRAL_VENOUS_PRESSURE [central venous pressure] {low}
+LOW_CENTRAL_VENOUS_PRESSURE [central venous pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<8:$1|NULL~
+LOW_FOOD_INTAKE [food intake] {low} 
+LOW_FIBRINOGEN [fibrinogen] {low}
+LOW_FIBRINOGEN [fibrinogen] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<200:$1|NULL~
+LOW_HEART_RATE [bradycardia]
+LOW_HEART_RATE [heart rate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<60:$1|NULL~
+LOW_HEMATOCRIT [hematocrit] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<35:$1|NULL~
+LOW_HEMOGLOBIN [hemoglobin] !{a1c} ~@SUBJECT.{0,10}?(@NUMBER)::|$1<12:$1|NULL~
+LOW_IMMATURE_RETICULOCYTE_FRACTION [immature retic fraction] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<3:$1|NULL~
+LOW_LYMPHOCYTE_COUNT [lymphocyte] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<1000:$1|NULL~
+LOW_MEAN_ARTERIAL_BLOOD_PRESSURE [mean arterial blood pressure] {low}
+LOW_MEAN_ARTERIAL_BLOOD_PRESSURE [mean arterial blood pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<70:$1|NULL~
+LOW_PLATELET_COUNT [platelet count] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<150:$1|NULL~
+LOW_PLATELET_COUNT [thrombocytopenia] & ![myelodysplastic syndrome] & ![aplastic anemia] & ![cirrhosis] & ![chronic hepatitis] & ![alcoholic liver disease] & ![non-alcholoic fatty liver disease]
+LOW_PREALBUMIN [prealbumin] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<20:$1|NULL~
+LOW_PULMONARY_ARTERY_OCCULSIVE_PRESSURE [pulmonary artery occlusive pressure] {low}
+LOW_PULMONARY_ARTERY_OCCULSIVE_PRESSURE [pulmonary artery occlusive pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<4:$1|NULL~
+LOW_PULSE_OXIMETRY [spo2] {low}
+LOW_PULSE_OXIMETRY [spo2] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<90:$1|NULL~
+LOW_RESPIRATORY_RATE [bradypnea] 
+LOW_RESPIRATORY_RATE [respiratory rate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<12:$1|NULL~
+LOW_RETICULOCYTE_COUNT [retic count] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<0.5:$1|NULL~
+LOW_SERUM_ALBUMIN [serum albumin] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<3.2:$1|NULL~
+LOW_SERUM_BICARBONATE [bicarbonate] !{drip} ~@SUBJECT.{0,10}?(@NUMBER)::|$1<22:$1|NULL~
+LOW_SERUM_CALCIUM [serum calcium] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<8.2:$1|NULL~
+LOW_SERUM_FERRITIN [serum ferritin] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<100:$1|NULL~
+LOW_SERUM_FOLATE [serum folate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<7.3:$1|NULL~
+LOW_SERUM_IRON [serum iron] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<150:$1|NULL~
+LOW_SERUM_POTASSIUM [hypokalemia]
+LOW_SERUM_POTASSIUM [serum potassium] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<3.4:$1|NULL~
+LOW_SERUM_SODIUM [serum sodium] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<135:$1|NULL~
+LOW_SYSTEMIC_VASCULAR_RESISTANCE [systemic vascular resistance] {low}
+LOW_SYSTEMIC_VASCULAR_RESISTANCE [systemic vascular resistance] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<900:$1|NULL~
+LOW_SYSTOLIC_BLOOD_PRESSURE [systolic blood pressure] {low} !{right ventricle}
+LOW_SYSTOLIC_BLOOD_PRESSURE [systolic blood pressure] !{right ventricle} ~@SUBJECT.{0,10}?(@NUMBER)::|$1<90:$1|NULL~
+LOW_TEMPERATURE [hypothermia] & ![other hypothermia] & ![hypothyroidism] !{history}
+LOW_TEMPERATURE [temperature] {celsius} ~@SUBJECT.{0,10}?(@NUMBER)::|$1<36:$1|NULL~
+LOW_TEMPERATURE [temperature] {fahrenheit} ~@SUBJECT.{0,10}?(@NUMBER)::|$1<96.6:$1|NULL~
+LOW_TOTAL_CHOLESTEROL [total cholesterol] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<120:$1|NULL~
+LOW_TOTAL_IRON_BINDING_CAPACITY [tibc] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<250:$1|NULL~
+LOW_TRANSFERRIN [transferrin] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<200:$1|NULL~
+LOW_URINE_OUTPUT [oliguria] & ![chronic kidney disease] & ![end-stage renal disease] & ![dialysis dependent]
+LOW_VITAMIN_B12 [vitamin b12] {low}
+LOWER_EXTREMITY_EDEMA [edema] `lower extremity` !{chronic} & ![end-stage renal disease] & ![dialysis dependent] & ![embolism and thrombosis] `lower_extremity`
+MALNOURISHED_SIGN [malnourished sign]
+MASS_EFFECT [mass effect] !{perihilar} !`lung`
+MAZE_PROCEDURE [maze procedure]
+MELENA [melena]
+MENTAL_HEALTH_DISORDER [mental health disorder] !{st}
+METABOLIC_ACIDOSIS [acidosis] {metabolic} !{acute} !{chronic} !{acute on chronic}
+MIDLINE_SHIFT [midline shift]
+MODERATE_MALNUTRITION [moderate malnutrition]
+MODERATELY_REDUCED_EJECTION_FRACTION [ejection fraction] {moderately reduced}
+MODERATELY_REDUCED_EJECTION_FRACTION [ejection fraction] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=41 and $1<50:$1|NULL~
+MUSCLE_CONTRACTURE [muscle contracture]
+MUSCLE_CRAMPS [muscle cramps]
+MYOSIN_INHIBITOR [myosin inhibitor]
+NEGATIVE_SERUM_KETONES [serum ketones] {negative}
+NEGATIVE_SERUM_KETONES [serum ketones] 
+NEGATIVE_URINE_KETONES [urine ketones] 
+NEGATIVE_URINE_KETONES [urine ketones] {negative}
+NEPHROSTOMY_CATHETER [nephrostomy catheter]
+NICARDIPINE [nicardipine]
+NICOTINE_WITHDRAWAL_MEDICATION [nicotine withdrawal medication]
+NIH_STROKE_SCALE_MINOR [nih stroke scale] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=1 and $1<=4:$1|NULL~
+NIH_STROKE_SCALE_MODERATE [nih stroke scale] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=5 and $1<=15:$1|NULL~
+NIH_STROKE_SCALE_MODERATE_TO_SEVERE [nih stroke scale] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=16 and $1<=20:$1|NULL~
+NIH_STROKE_SCALE_SEVERE [nih stroke scale] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>20:$1|NULL~
+NITROGLYCERIN [nitroglycerin] !{not taken} !{cocktail solution}
+NITROPRUSSIDE [nitroprusside]
+NOCTURNAL_COUGH [nocturnal cough]
+NON_CARDIAC_CHEST_PAIN [non-cardiac chest pain] !{chronic} !{history} & ![myocardial infarction] !{history} & ![ruptured aortic aneurysm] !{history} & ![dissection of thoracoabdominal aorta] !{history} & ![dissection of thoracic aorta] !{history}
+NON_HEALING_WOUND [non-healing wound]
+NORMAL_BLOOD_PH [normal blood ph] 
+NORMAL_CARDIAC_INDEX [cardiac index] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=2.5 and $1<=4:$1|NULL~
+NORMAL_CARDIAC_OUTPUT [cardiac output] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=4 and $1<=8:$1|NULL~
+NORMAL_CENTRAL_VENOUS_PRESSURE [central venous pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=8 and $1<=12:$1|NULL~
+NORMAL_PULMONARY_ARTERY_OCCULSIVE_PRESSURE [pulmonary artery occlusive pressure] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=4 and $1<=12:$1|NULL~
+NORMAL_SERUM_BICARBONATE [bicarbonate] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>22 and $1<26:$1|NULL~
+NORMAL_SYSTEMIC_VASCULAR_RESISTANCE [systemic vascular resistance] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=900 and $1<=1200:$1|NULL~
+OBTUNDED [obtunded]
+OPIOID_OVERDOSE [opioid overdose] !{history}
+OPIOID_WITHDRAWAL [opioid withdrawal]
+OTHER_URINARY_DRAINAGE_DEVICE [other urinary drainage device]
+OXYGEN_THERAPY [oxygen therapy] !{home}
+PARENTERAL_NUTRITION [parenteral nutrition]
+PAROXYSMAL_NOCTURNAL_DYSPNEA [paroxysmal nocturnal dyspnea]
+PELVIC_PAIN [pain] `pelvic` !{chronic} !{history} & ![injured in accident] !{history}
+PERICARDIAL_EFFUSION [pericarial effusion] !{small} !{generalized} !{chronic}
+PHOTOPHOBIA [photophobia] !{history} & ![migraines] & ![post dural puncture headache]
+PLASMA_DERIVED_FACTOR_CONCENTRATE [plasma derived factor concentrate]
+PLEURAL_EFFUSION [effusion] `pleura` !{small} & ![embolism] `pulmonary` !{history} 
+PLEURAL_FLUID_CULTURE [pleural fluid culture]
+PLEURAL_RUB [pleural rub]
+POOR_DENTITION [poor dentition]
+POOR_IMMOBILITY [poor immobility]
+POSITIVE_CEREBROSPINAL_FLUID_CULTURE [cerebrospinal fluid culture] {positive}
+POSITIVE_KETONES_IN_URINE [urine ketones] {positive}
+POSITIVE_SERUM_KETONES [serum ketones] 
+POSITIVE_SERUM_KETONES [serum ketones] {positive}
+POSITIVE_URINE_KETONES [urine ketones] 
+POSITIVE_URINE_KETONES [urine ketones] {positive}
+POSITIVE_WOUND_CULTURE [wound culture] {positive}
+PRESENT_ON_ADMISSION_NO [present on admission] {no}
+PRESENT_ON_ADMISSION_YES [present on admission] {yes}
+PRESERVED_EJECTION_FRACTION [ejection fraction] {preserved} 
+PRESERVED_EJECTION_FRACTION [ejection fraction] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=50:$1|NULL~
+PROCALCITONIN_ELEVATED [procalcitonin] {high}
+PROCALCITONIN_ELEVATED [procalcitonin] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>0.24:$1|NULL~
+PSYCHOGENIC_HYPERVENTILATION [psychogenic hyperventilation]
+PSYCHOSIS [psychosis] !{chronic}
+PULMONARY_EDEMA [edema] `pulmonary` !{acute} !{chronic} !{history} !{chemicals} !{favoring}
+PURULENT_DRAINAGE [purulent drainage]
+RALES [rales]
+RECOMBINANT_FACTOR_CONCENTRATE [recombinant factor concentrate] 
+REDUCED_EJECTION_FRACTION [ejection fraction] {reduced} !{moderately reduced}
+REDUCED_EJECTION_FRACTION [ejection fraction] ~@SUBJECT.{0,10}?(@NUMBER)::|$1<41:$1|NULL~
+RESPIRATORY_ACIDOSIS [acidosis] {respiratory}
+RESPIRATORY_TREATMENT_MEDICATION [respiratory treatment medication] !{history}
+RESTLESSNESS [restlessness] !{leg syndrome} !{leg} !{regimen} !{sleep}
+RHONCHI [rhonchi]
+RIGHT_INTERNAL_CAROTID_STENOSIS [internal carotid stenosis] {right} !{external} ~@SUBJECT.{0,10}?(@NUMBER)::|$1>=50:$1|NULL~
+RIGHT_VENTRICLE_HYPERTROPHY [right ventricle hypertrophy]
+S3_HEART_SOUND [s3 heart sound]
+SEIZURE [seizure] !{history} !{chronic} & ![post traumatic seizure] !{history} & ![epilepsy and recurrent seizures] & ![conversion disorder with seizures or convulsions]
+SEVERE_AORTIC_VALVE_STENOSIS [aortic stenosis] {severe}
+SEVERE_AORTIC_VALVE_REGURGITATION [aoric regurgitation] {severe}
+SEVERE_MALNUTRTION [severe malnutrition]
+SEVERE_MITRAL_VALVE_STENOSIS [mitral stenosis] {severe}
+SEVERE_MITRAL_VALVE_REGURGITATION [mitral regurgitation] {severe}
+SEVERE_PULMONIC_VALVE_STENOSIS [tricuspid stenosis] {severe}
+SEVERE_PULMONIC_VALVE_REGURGITATION [tricuspid regurgitation] {severe}
+SEVERE_TRICUSPID_VALVE_STENOSIS [tricuspid stenosis] {severe}
+SEVERE_TRICUSPID_VALVE_REGURGITATION [tricuspid regurgitation] {severe}
+SHORTNESS_OF_BREATH [respiratory distress] !{chronic} !{on exertion} 
+SHORTNESS_OF_BREATH_LYING_FLAT [orthopnea]
+SOCIAL_FACTOR [social factor]
+SORE_THROAT [pharyngitis] !{chronic} !{history} 
+SPLENOMEGALY [splenomegaly] !{chronic}
+STATIN [statin]
+STEROIDS [steroid use] !{history}
+STIFF_NECK [nuchal rigidity] !{chronic} !{history} & ![neck strain] & [cervical spine disorders] {history} & ![cervial spine surgery] {history}
+SWOLLEN_LYMPH_NODES [enlarged lymph nodes] !{chronic} !{history} 
+SYSTOLIC_HEART_FAILURE [systolic congestive heart failure] !{family hx} !{combined sytolic and diastolic}
+THROMBOLYTIC [thrombolytic]
+TRANSFER_WITH_A_LIFT [transfer with a lift]
+UREMIA [uremia] !{chronic} !{history}
+URINARY_PAIN [urinary pain] !{chronic} & ![psychogenic pain with micturition]
+URINE_OUTPUT [urine output] ~@SUBJECT.{0,10}?(@NUMBER)::$1~
+USE_OF_ACCESSORY_MUSCLES [use of accessory muscles]
+UTI_CAUSATIVE_AGENT [uti causative agent]
+UTI_PRESENT_ON_ADMISSION [uti present on admission]
+VASOACTIVE_MEDICATION [vasoactive medication] !{local anesthetic with} & ![stress test]
+VENTILATOR_DAYS [ventilator days] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>0:$1|NULL~
+VIRAL_PNEUMONIA_ORGANISM [viral pneumonia organism] !{history}
+WALL_MOTION_ABNORMALITIES [wall motion abnormalities]
+WATCHMAN_PROCEDURE [watchman procedure]
+WHEEZING [wheezing]
+WBC_HIGH [leukocytosis] !{chronic}
+WBC_HIGH [white blood cell count] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>12000:$1|NULL~
+WBC_LOW [white blood cell count] {low} !{chronic}
+WBC_LOW [white blood cell count] {low} ~@SUBJECT.{0,10}?(@NUMBER)::|$1<4000:$1|NULL~
+WBCS_IN_URINE [wbcs in urine] ~@SUBJECT.{0,10}?(@NUMBER)::|$1>5:$1|NULL~
+WEAKNESS [weakness] !{chronic} 
