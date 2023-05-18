@@ -47,3 +47,12 @@ fn strip_token_edges(token: &str) -> Result<String, StaticParseError> {
 		.map_err(|err| user_error("Invalid UTF-8"))?;
 	Ok(result)
 }
+
+fn strip_token_end(token: &str) -> Result<String, StaticParseError> {
+	let mut bytes = token.bytes().collect::<VecDeque<u8>>();
+	bytes.pop_back();
+	let mut result = String::new();
+	bytes.read_to_string(&mut result)
+		.map_err(|err| user_error("Invalid UTF-8"))?;
+	Ok(result)
+}

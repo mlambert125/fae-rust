@@ -1,8 +1,8 @@
 use crate::rules::*;
 use crate::rules::RuleTermType::*;
-use crate::strip_token_edges;
+use crate::{strip_token_edges, strip_token_end};
 use crate::user_error;
-use lalrpop_util::ParseError;
+use std::collections::VecDeque;
 use std::str::FromStr;
 
 grammar;
@@ -12,39 +12,61 @@ pub Rules: Vec<RuleDefinition> = {
 }
 
 pub Rule: RuleDefinition = {
-	<code:Code> <mut components:And<RuleComponent>> "\n"? =>? {
+	<code:Code> <components:And<Component>> "\n"? =>? {
 		if components.len() == 0 {
 			return Err(user_error("Missing rule components. Must have at least one subject."));
 		}
 
-		// Ideally we'd `pop_front()` on a VecDeque but this doesn't play nice with the rest of the API.
-		let primary_component = components.remove(0);
+		let mut capture = None;
+		let mut primary_component = None;
+		let mut secondary_components = Vec::new();
 
-		Ok(RuleDefinition {
+		for i in components {
+			let component = i.0;
+			if primary_component.is_none() {
+				primary_component = Some(component);
+			} else {
+				secondary_components.push(component);
+			}
+
+			if let Some(c) = i.1 {
+				if capture.is_none() {
+					capture = Some(c);
+				} else {
+					return Err(user_error("Cannot have multiple capture expressions"));
+				}
+			}
+		}
+
+		if primary_component.is_none() {
+			return Err(user_error("Missing rule components. Must have at least one subject."));
+		}
+
+		let rule = RuleDefinition {
 			id: None,
 			code,
-			primary_component,
-			secondary_components: components,
-			capture_pattern: String::new(),
-			capture_formula: String::new(),
-		})
+			primary_component: primary_component.unwrap(), // This is safe because of the check above.
+			secondary_components,
+			capture,
+		};
+
+		Ok(rule)
 	},
 }
 
-RuleComponent: RuleComponent = {
-	<terms:RuleTerm+> =>? {
+Component: (RuleComponent, Option<RuleCapture>) = {
+	<terms:Term+> =>? {
 		let mut subject = None;
 		let mut modifiers = Vec::new();
 		let mut demographics = Vec::new();
 		let mut body_parts = Vec::new();
+		let mut capture = None;
+		let mut age_range = None;
 
-		println!("{terms:#?}");
 		for i in terms {
 			match i {
 				Subject(s) => {
 					if subject.is_some() {
-						// TODO: should this keep going? what is the intended behavior?
-						// These errors are really verbose for seemingly no reason.
 						return Err(user_error("More than one subject specified"));
 					}
 					subject = Some(s)
@@ -52,18 +74,34 @@ RuleComponent: RuleComponent = {
 				Modifier(s) => modifiers.push(s),
 				Demographic(s) => demographics.push(s),
 				BodyPart(s) => body_parts.push(s),
+				AgeRange(s) => {
+					if age_range.is_some() {
+						return Err(user_error("More than one age range specified"));
+					}
+					age_range = Some(s)
+				}
+				Capture(s) => {
+					if capture.is_some() {
+						return Err(user_error("More than one capture specified"));
+					}
+					capture = Some(s)
+				}
 			}
 		}
 
 		// Subject can be None while we're still searching for it, but by the time
 		// it hits RuleComponent it must have a concrete value.
 		if let Some(subject) = subject {
-			Ok(RuleComponent {
-				subject,
-				modifiers,
-				demographics,
-				body_parts,
-			})
+			Ok((
+				RuleComponent {
+					subject,
+					modifiers,
+					demographics,
+					body_parts,
+					age_range,
+				},
+				capture,
+			))
 		} else {
 			Err(user_error("No subject specified"))
 		}
@@ -71,75 +109,69 @@ RuleComponent: RuleComponent = {
 	}
 }
 
-pub RuleTerm: RuleTermType = {
+pub Term: RuleTermType = {
 	// Subject
-	r"\[[^\]]+\]" =>? {
-		Ok(Subject(
-			RuleTerm::from(strip_token_edges(<>)?)
-		))
-	},
-	// Modifier
-	r"\{[^\}]+\}" =>? {
-		Ok(Modifier(
-			RuleTerm::from(strip_token_edges(<>)?)
-		))
-	},
-	// Demographic
-	r#""[^"]+""# =>? {
-		Ok(Demographic(
-			RuleTerm::from(strip_token_edges(<>)?)
-		))
-	},
-	// Body Part
-	r"\`[^`]+\`" =>? {
-		Ok(BodyPart(
-			RuleTerm::from(strip_token_edges(<>)?)
-		))
-	},
-
-	// Negated versions
-
-	// Subject
-	"!" <s:r"\[[^\]]+\]"> =>? {
+	<n:"!"?> <s:r"\[[^\]]+\]"> =>? {
 		Ok(Subject(
 			RuleTerm {
 				value: strip_token_edges(s)?,
-				negate: true,
+				negate: n.is_some(),
 			}
 		))
 	},
 	// Modifier
-	"!" <s:r"\{[^\}]+\}"> =>? {
+	<n:"!"?> <s:r"\{[^\}]+\}"> =>? {
 		Ok(Modifier(
 			RuleTerm {
 				value: strip_token_edges(s)?,
-				negate: true,
+				negate: n.is_some(),
 			}
 		))
 	},
 	// Demographic
-	"!" <s:r#""[^"]+""#> =>? {
+	<n:"!"?> <s:r#""[^"]+""#> =>? {
 		Ok(Demographic(
 			RuleTerm {
 				value: strip_token_edges(s)?,
-				negate: true,
+				negate: n.is_some(),
 			}
 		))
 	},
 	// Body Part
-	"!" <s:r"\`[^`]+\`"> =>? {
+	<n:"!"?> <s:r"\`[^`]+\`"> =>? {
 		Ok(BodyPart(
 			RuleTerm {
 				value: strip_token_edges(s)?,
-				negate: true,
+				negate: n.is_some(),
 			}
 		))
 	},
+	// Age Range
+	// This wasn't in the spec I was given but two of the entries in ./sample-files/cdi.rules
+	// have age ranges on them.
+	<s:r"(<|>)[^,]*,"> =>? {
+		Ok(AgeRange(strip_token_end(s)?))
+	},
+	// Capture
+	<s:r"~[^~]+~"> =>? {
+		let stripped_token = strip_token_edges(s)?;
+		let halves: Vec<&str> = stripped_token.split("::").collect();
+		if halves.len() < 2 {
+			return Err(user_error("Expected a capture formula after capture pattern"));
+		}
+		if halves.len() > 2 {
+			return Err(user_error("Invalid :: after capture formula."));
+		}
+		Ok(Capture(RuleCapture {
+			pattern: halves[0].to_string(),
+			formula: halves[1].to_string(),
+		}))
+	}
 }
 
 Num: i32 = <s:r"-?[0-9]+"> => i32::from_str(s).unwrap();
 // Codes are always ALL_CAPS identifiers (no spaces).
-Code: String = <s:r"[_A-Z]+"> => s.to_string();
+Code: String = <s:r"[_A-Z][_A-Z0-9]*"> => s.to_string();
 
 And<T>: Vec<T> = {
     <mut v:(<T> "&")*> <e:T?> => match e {

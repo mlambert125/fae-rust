@@ -4,10 +4,9 @@ use mongodb::bson::oid::ObjectId;
 pub struct RuleDefinition {
 	pub id: Option<ObjectId>,
 	pub code: String,
-	pub primary_component : RuleComponent,
-	pub secondary_components : Vec<RuleComponent>,
-	pub capture_pattern : String,
-	pub capture_formula : String
+	pub primary_component: RuleComponent,
+	pub secondary_components: Vec<RuleComponent>,
+	pub capture: Option<RuleCapture>,
 }
 
 #[derive(Debug)]
@@ -16,6 +15,8 @@ pub struct RuleComponent {
 	pub modifiers: Vec<RuleTerm>,
 	pub demographics: Vec<RuleTerm>,
 	pub body_parts: Vec<RuleTerm>,
+	// This is probably supposed to be parsed at some point.
+	pub age_range: Option<String>,
 }
 
 #[derive(Debug)]
@@ -34,6 +35,12 @@ impl From<String> for RuleTerm {
 }
 
 #[derive(Debug)]
+pub struct RuleCapture {
+	pub pattern: String,
+	pub formula: String,
+}
+
+#[derive(Debug)]
 // This could also be a field within RuleTerm but the information is only really
 // useful to the parser and would be redundant inside of RuleComponent.
 pub enum RuleTermType {
@@ -41,4 +48,7 @@ pub enum RuleTermType {
     Modifier(RuleTerm),
     Demographic(RuleTerm),
     BodyPart(RuleTerm),
+    AgeRange(String),
+	Capture(RuleCapture)
 }
+
