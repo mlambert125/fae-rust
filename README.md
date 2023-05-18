@@ -1,3 +1,8 @@
+## Formatting
+
+Run `cargo fmt` to format the project.
+Formatting can be configured using `./rustfmt.toml`
+
 ## Syntax
 
 LINE:

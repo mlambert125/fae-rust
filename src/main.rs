@@ -1,11 +1,10 @@
-mod rule_parsing;
-mod rules;
+use fae::RulesParser;
+use std::error::Error;
+use std::fs;
 
-fn main() {
-    let rules = 
-        rule_parsing::parse_rules_file(String::from("./sample-files/cdi.rules"));
-
-    for rule in rules {
-        println!("Rule for code: {0}", rule.code);
-    }
+fn main() -> Result<(), Box<dyn Error>> {
+    let input = fs::read_to_string("./sample-files/simple.rules")?;
+    let rule = RulesParser::new().parse(&input);
+	println!("{:#?}", rule);
+    Ok(())
 }

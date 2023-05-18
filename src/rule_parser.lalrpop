@@ -1,0 +1,152 @@
+use crate::rules::*;
+use crate::rules::RuleTermType::*;
+use crate::strip_token_edges;
+use crate::user_error;
+use lalrpop_util::ParseError;
+use std::str::FromStr;
+
+grammar;
+
+pub Rules: Vec<RuleDefinition> = {
+    Rule* => <>
+}
+
+pub Rule: RuleDefinition = {
+	<code:Code> <mut components:And<RuleComponent>> "\n"? =>? {
+		if components.len() == 0 {
+			return Err(user_error("Missing rule components. Must have at least one subject."));
+		}
+
+		// Ideally we'd `pop_front()` on a VecDeque but this doesn't play nice with the rest of the API.
+		let primary_component = components.remove(0);
+
+		Ok(RuleDefinition {
+			id: None,
+			code,
+			primary_component,
+			secondary_components: components,
+			capture_pattern: String::new(),
+			capture_formula: String::new(),
+		})
+	},
+}
+
+RuleComponent: RuleComponent = {
+	<terms:RuleTerm+> =>? {
+		let mut subject = None;
+		let mut modifiers = Vec::new();
+		let mut demographics = Vec::new();
+		let mut body_parts = Vec::new();
+
+		println!("{terms:#?}");
+		for i in terms {
+			match i {
+				Subject(s) => {
+					if subject.is_some() {
+						// TODO: should this keep going? what is the intended behavior?
+						// These errors are really verbose for seemingly no reason.
+						return Err(user_error("More than one subject specified"));
+					}
+					subject = Some(s)
+				}
+				Modifier(s) => modifiers.push(s),
+				Demographic(s) => demographics.push(s),
+				BodyPart(s) => body_parts.push(s),
+			}
+		}
+
+		// Subject can be None while we're still searching for it, but by the time
+		// it hits RuleComponent it must have a concrete value.
+		if let Some(subject) = subject {
+			Ok(RuleComponent {
+				subject,
+				modifiers,
+				demographics,
+				body_parts,
+			})
+		} else {
+			Err(user_error("No subject specified"))
+		}
+
+	}
+}
+
+pub RuleTerm: RuleTermType = {
+	// Subject
+	r"\[[^\]]+\]" =>? {
+		Ok(Subject(
+			RuleTerm::from(strip_token_edges(<>)?)
+		))
+	},
+	// Modifier
+	r"\{[^\}]+\}" =>? {
+		Ok(Modifier(
+			RuleTerm::from(strip_token_edges(<>)?)
+		))
+	},
+	// Demographic
+	r#""[^"]+""# =>? {
+		Ok(Demographic(
+			RuleTerm::from(strip_token_edges(<>)?)
+		))
+	},
+	// Body Part
+	r"\`[^`]+\`" =>? {
+		Ok(BodyPart(
+			RuleTerm::from(strip_token_edges(<>)?)
+		))
+	},
+
+	// Negated versions
+
+	// Subject
+	"!" <s:r"\[[^\]]+\]"> =>? {
+		Ok(Subject(
+			RuleTerm {
+				value: strip_token_edges(s)?,
+				negate: true,
+			}
+		))
+	},
+	// Modifier
+	"!" <s:r"\{[^\}]+\}"> =>? {
+		Ok(Modifier(
+			RuleTerm {
+				value: strip_token_edges(s)?,
+				negate: true,
+			}
+		))
+	},
+	// Demographic
+	"!" <s:r#""[^"]+""#> =>? {
+		Ok(Demographic(
+			RuleTerm {
+				value: strip_token_edges(s)?,
+				negate: true,
+			}
+		))
+	},
+	// Body Part
+	"!" <s:r"\`[^`]+\`"> =>? {
+		Ok(BodyPart(
+			RuleTerm {
+				value: strip_token_edges(s)?,
+				negate: true,
+			}
+		))
+	},
+}
+
+Num: i32 = <s:r"-?[0-9]+"> => i32::from_str(s).unwrap();
+// Codes are always ALL_CAPS identifiers (no spaces).
+Code: String = <s:r"[_A-Z]+"> => s.to_string();
+
+And<T>: Vec<T> = {
+    <mut v:(<T> "&")*> <e:T?> => match e {
+        None => v,
+        Some(e) => {
+            v.push(e);
+            v
+        }
+    }
+};
