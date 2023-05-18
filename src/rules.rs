@@ -1,7 +1,7 @@
 use mongodb::bson::oid::ObjectId;
 
 pub struct RuleDefinition {
-    pub id : ObjectId,
+    pub id : Option<ObjectId>,
     pub code : String,
     pub primary_component : RuleComponent,
     pub secondary_components : Vec<RuleComponent>,
@@ -15,6 +15,7 @@ pub struct RuleComponent {
     pub demographics : Vec<NegatableTerm>,
     pub body_parts : Vec<NegatableTerm>
 }
+
 pub struct NegatableTerm {    
     pub value : String,
     pub positive : bool
