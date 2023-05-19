@@ -7,7 +7,7 @@ pub mod rules;
 lalrpop_mod!(pub rule_parser);
 pub use rule_parser::RulesParser;
 
-type StaticParseError<'a> = ParseError<usize, lalrpop_util::lexer::Token<'a>, &'static str>;
+pub type StaticParseError<'a> = ParseError<usize, lalrpop_util::lexer::Token<'a>, &'static str>;
 
 // This is just a helper to reduce the verbosity of error messages
 fn user_error(error: &'static str) -> StaticParseError {

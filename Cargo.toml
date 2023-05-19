@@ -14,6 +14,7 @@ serde_json="1.0.96"
 regex="1.8.1"
 lalrpop-util = { version = "0.20.0", features = ["lexer"] }
 anyhow = "1.0.71"
+codespan-reporting = "0.11.1"
 
 # Add a build-time dependency on the lalrpop library.
 [build-dependencies]
